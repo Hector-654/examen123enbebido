@@ -1,20 +1,25 @@
 //https://www.eclipse.org/paho/clients/js/
 
 function SUMA() {
-	var a,y;
-	a = "1000";
-	b = "4000";
+	var a,b;
+	//a = "1000";
+	//b = "4000";
+	var cd1 = parseFloat(document.getElementById('cd1').value);
+	var cd2 = parseFloat(document.getElementById('cd2').value);
 	
-	message =new Paho.MQTT.Message("S"+" "+ a+ " " + b);
+	message =new Paho.MQTT.Message("S"+" "+ cd1+ " " + cd2);
 	message.destinationName = "654hector1@gmail.com/kop";
 	client.send(message);
   
 }
 function RESTA(){
-	var a,y;
-	a = "1000";
-	b = "4000";
-	message =new Paho.MQTT.Message("R"+" "+ a+" " + b);
+	var a,b;
+	//a = "1000";
+	//b = "4000";
+	var cd1 = parseFloat(document.getElementById('cd1').value);
+	var cd2 = parseFloat(document.getElementById('cd2').value);
+	
+	message =new Paho.MQTT.Message("R"+" "+ cd1+" " + cd2);
 	message.destinationName = "654hector1@gmail.com/kop";
 	client.send(message);
 }
@@ -78,4 +83,5 @@ function RESTA(){
 
   
   }
+  
   
