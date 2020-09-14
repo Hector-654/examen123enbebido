@@ -1,30 +1,33 @@
-function SUMA(){
-	var a,b;
-	a = "1000";
-	b = "4000";
-	var cd1 = parseFloat(document.getElementById('ing').value);
-	var cd2 = parseFloat(document.getElementById('cd2').value);
-	var r = cd1+cd2;
-	document.getElementById('cd3').value= r;
+//https://www.eclipse.org/paho/clients/js/
+
+
+
+function suma(){
+	var num1=Number(document.getElementById('n1').value);
+	var num2=Number(document.getElementById('n2').value);
 	
-	message =new Paho.MQTT.Message("Resta"+ " "+ cd1+" " + cd2);
+	message =new Paho.MQTT.Message("Sum"+" "+ num1+" "+ num2);
 	message.destinationName = "654hector1@gmail.com/kop";
 	client.send(message);
-}
-function RESTA(){
-	var a,b;
-	a = "1000";
-	b = "4000";
-	var cd1 = parseFloat(document.getElementById('ing').value);
-	var cd2 = parseFloat(document.getElementById('cd2').value);
-	var r = cd1-cd2;
-	document.getElementById('cd3').value= r;
 	
-	message =new Paho.MQTT.Message("Resta"+ " "+ cd1+" " + cd2);
-	message.destinationName = "654hector1@gmail.com/kop";
-	client.send(message);
+	var res=num1+num2;
+	
+	document.getElementById('res').value=res;
+	console.log("la suma es:...."+res);
 }
 
+function resta(){
+	var num1=Number(document.getElementById('n1').value);
+	var num2=Number(document.getElementById('n2').value);
+	
+	message =new Paho.MQTT.Message("Res"+" "+ num1+" "+ num2);
+	message.destinationName = "654hector1@gmail.com/kop";
+	client.send(message);
+	
+	var res=num1-num2;
+	document.getElementById('res').value=res;
+	console.log("la resta es:...."+res);
+}
 
 
 
@@ -75,10 +78,11 @@ function RESTA(){
 
   // called when a message arrives
   function onMessageArrived(message) {
-	//console.log("mensaje del sensor:"+message.payloadString);
 	text=(message.payloadString);
-	 console.log(text)
-	 document.getElementById("n1").innerHTML = text;
+	console.log(text)
+	document.getElementById("res2").innerHTML = text;
+ 
+	//console.log("mensaje del sensor:"+message.payloadString);
 	
 	
 
